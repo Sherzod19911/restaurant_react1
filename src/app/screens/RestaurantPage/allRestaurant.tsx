@@ -21,6 +21,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 
 
 
+
 //REDUX
 import { useDispatch, useSelector} from "react-redux";
 import { createSelector } from "reselect";
@@ -62,6 +63,7 @@ const order_list = Array.from(Array(8).keys())
 
 export function AllRestaurants() {
     /**INITIALIZATIONS */
+    const history = useHistory();
   const { setTargetRestaurants } = actionDispatch(useDispatch());
   const { targetRestaurants } = useSelector(setTargetRestaurantsRetriever);
   const [targetSearchObject, setTargetSearchObject] = useState<SearchObj>({
@@ -69,7 +71,7 @@ export function AllRestaurants() {
     limit: 4,
     order: "mb_point",
   });
-  const history = useHistory();
+
   const refs: any = useRef([]);
 
   useEffect(() => {
