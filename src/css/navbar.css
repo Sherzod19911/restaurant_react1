@@ -1,0 +1,621 @@
+.home_navbar {
+   
+    width: 1920px;
+    height: 931px;
+    display: flex;
+
+    
+    /* background-size: cover; */
+    /*background-color: #f8f9fa;*/
+   
+    border: 1px solid rgb(206, 38, 38);
+    background-color: #f4fde7; 
+
+
+  }    
+
+  .home_navbar .navbar_config {
+   
+    width: 1244.68px;     
+    height: 46px;
+    margin-left:26px;       
+    margin-top:55px;
+    border: 1px solid rgb(141, 19, 19);
+
+ } 
+
+ .home_navbar .navbar_links {
+    width: 752px;
+    height: 46px;
+} 
+
+.home_navbar a {
+    text-decoration: none;
+}
+
+.home_navbar .hover-line a {
+    color: #184ab6;
+}
+
+.home_navbar .under-line {
+    display: block;   
+    content: '';
+    border-bottom: solid 2px #d7b686;
+
+    }
+    .home_navbar .hover-line:after {
+      display: block;
+      content: '';
+      border-bottom: solid 2px #d7b686;
+      transform: scaleX(0);
+      transform: transform 250ms ease-in-out;
+    }
+
+    .home_navbar .hover-line:hover:after {
+      transform: scaleX(1);
+    }
+    .home_navbar .head_information {   
+      display: flex;
+      flex-direction: row;
+      width: 1244px;
+      height: 810px;
+      /*background-color:  #f8f9fa;*/
+      background-color: "#F4FDE7";
+      border: "1px solid black";
+   
+      margin-top: 35px;
+
+    }
+    .home_navbar .head_information1 {   
+   
+      width: 700px;
+      height: 723px;
+   
+      
+      margin-top: 20px;
+
+    }
+
+
+    .home_navbar .define_restaurant {
+      position: relative;   
+      width: 669px;
+      height: 150px;
+      margin-top: 40px;
+      font-size: 25px;
+      color: #222222;
+      padding-top: 10px;
+      
+
+     font-family: Poppins;
+     font-size: 50px;    
+     font-style: normal;
+     font-weight: 600;
+     line-height: normal;
+    }
+
+    .home_navbar .timeline_sevice {
+      position: relative;
+      width: 465.996px;
+      height: 28px;
+      margin-top:30px;      
+      color: #D4D4D4;
+
+      font-family: Poppins;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+     line-height: normal;
+    }
+    .home_navbar .big_img1 {
+      position: relative;
+      width: 277px;
+      height: 277px;
+      margin-top: 41px;
+      margin-left: 494px;
+      background: url("");    
+      border-radius: 90px 0 0 0;
+      filter: invert(46%) blur(1px);
+      background-size: cover;  
+     
+
+    }
+    .home_navbar .header1 {
+     width: 398px;
+     height: 24px; 
+    
+     color:#FE9F10;
+     font-family: Poppins;
+     font-size: 20px;
+     margin-top: 10px;
+     padding-bottom: 5px;
+    }
+
+    .home_navbar .header2 {
+      width: 500px;
+      height: 88px;
+      color:#666666;
+      font: 16px;
+      margin: 40px 0px 16px;
+      font-family: Poppins;
+    
+      padding-top: 1px;
+    }
+    .home_navbar .title {
+      font: 40px;
+      color: #222222;
+      Margin: 0px 0px 10px;   
+      
+    }
+
+    .home_navbar.button {
+    width: 669px;
+    height: 57px;
+    Margin: 60px 0px 0px;
+  
+    }
+
+    .home_navbar .pagination {
+      
+      width: 750px;
+      height: 86px;
+      margin-top: 100px;
+    
+      }
+
+    .home_navbar .big_img {
+      display: flex;
+      flex-direction: row;
+      width: 930px;
+      height: 833px;
+      margin-top: -40px;
+      position: relative;
+      margin-left: 250px;
+      box-sizing: border-box;
+
+      background-color: #7DA640;
+      background-size: cover; 
+     
+    
+     
+
+    }
+    .home_navbar .right_sides {
+      /* width: 100%;
+      height: 100%; */
+      box-sizing: border-box;
+      margin-right: 80px;    
+      padding-top: -40px;
+      padding-bottom: 10px;
+      position: absolute;
+      margin-bottom: 0px;
+      padding-bottom: 0px;
+      margin-left: 0px;
+ 
+    
+
+    }
+    /* .home_navbar .right_side {
+       width: 560px;
+      height: 928px;
+   
+      background-color: #7DA640;
+      background-size: cover; 
+      position: relative;
+      margin-left: 1360px;
+    
+    } */
+
+/* 
+     .static_frame {
+     width: 100%;
+     height: 717px;
+     background-color: #FFF;
+     margin-left: 20px;
+     Padding: 100px 0px 70px;
+     border: 1px solid green;
+
+    } 
+    .menu {
+      width: 930px;
+      height: 50px;
+      color: #22222222;
+      Font: 50px;
+      Margin: 0px 0px 15px;
+      border:1 px solid green;
+    }
+    .menu1 {
+      width: 960px;
+      height: 465px;
+    
+      border:1 px solid rgb(45, 0, 128);
+    } */
+
+  .menu_static_frame {
+    width: 1865px;
+    height: 637px;
+    display: flex;
+    background: #FFFFFF;
+
+    margin-left: 50px;
+    margin-top: 90px;
+  }
+
+  .homepage .category_title {
+    width: 1230px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 50px;
+    font-family: Roboto;
+    font-style: normal;
+    font-style: normal;
+    /* Margin: 20px 0px 20px; */
+    font-size: 50px;
+    line-height: 62px;
+    color: #222222;
+
+   
+
+  }
+
+  .homepage.image{
+    width: 150px;
+    min-width: 150px;
+    margin: 0 auto 10px;
+    border-radius: 50%;
+    border: 9px solid #FFF;
+    transition: all .5s;
+    position: relative;
+    overflow: hidden;
+
+   
+  }
+  .homepage .menu_photo {
+    width: 320px;
+    height: 320px;
+    /* margin-left: 55px; */
+   
+   /* margin-top: 10px;*/
+
+  }
+
+  .buttun_card {
+    width: 132px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    Margin: 0px 27px 0px;
+    margin-left: 50px;
+    padding: 9px 20px;
+    background: #8cb482;
+    border: 2px solid green;
+    color: #fff;
+    border-radius: 10px;
+  }
+  .homepage .price {
+    width: 198px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+  
+    justify-content: center;
+    font-weight: 80px;    
+    color: #7DA640;
+    Font: 20px;
+    margin: 5px 0px 8px;
+    font-family: sans-serif;
+  }
+
+  .homepage .pizza {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+  }
+
+.Comments_static_frame {
+  width: 1920px;
+  height: 693px;
+  margin-top: 10px;
+
+
+  background-color: #fff;
+
+}
+.homepage .comments {
+  width: 1184px;
+  height: 470px;
+  display: flex;
+  flex-direction: row;
+  margin-left: 350px;
+
+margin-top: 45px;
+}
+
+.homepage .Comment_category_title {
+  width: 483px;
+  height: 75px;
+  display: flex;
+  align-items: "center";
+  justify-content: "center";
+  margin-top: 45px;
+  font-family: Roboto;
+  font-style: normal;
+  margin-left: 700px;
+  font-style: normal;
+  /* Margin: 20px 0px 20px; */
+  font-size: 45px;
+  font-weight: 200px;
+  color: #222222;
+ 
+}
+.homepage .comments_image {
+  width: 705px;
+  height: 470px;
+ 
+  
+  margin-left: 15px;
+}
+
+.homepage .rasim {
+ width: 225px;
+ height: 225px;
+}
+
+
+.homepage .comment_right {
+  width: 470px;
+  height: 470px;
+  background-color: #7DA640; 
+
+  
+}
+.homepage .p {
+  width: 390px;
+  height: 304px;
+
+  
+  color: #FFF;
+  font-size: 18px;
+  font-family: Poppins;
+  margin-left: 30px;
+  margin-top: 25px;
+  padding: 10px;
+}
+
+.homepage .p2 {
+  width: 390px;
+  height: 304px;
+
+  
+  color: #FFF;
+  font-size: 18px;
+  font-family: Poppins;
+  margin-left: 30px;
+  margin-top: 25px;
+  padding: 10px;
+}
+.homepage .name {
+  width: 190px;
+  height: 55px;
+
+  margin-left: 27px;
+  color: #FFFFFF;
+
+}
+.homepage .name2 {
+  width: 190px;
+  height: 55px;
+
+  margin-left: 27px;
+  color: #FFFFFF;
+
+}
+.format_restaurant.home_navbar {
+  width: 100%;
+  height: 650px;
+  display: flex;
+  background: url("/public/restaurant/header_restaurant.png");
+  background-size: cover;
+}
+
+
+
+
+
+.restaurant_static_frame {
+  width: 100%;
+  height: 100%;
+  background: #e9ecef;
+  border: 2px solid rgb(128, 0, 0);
+  box-sizing: border-box;
+
+};
+
+.shop_photo {
+  width: 290px;
+  height: 173px;
+  background: #FFF;
+  border: 2px solid rgb(81, 0, 128);
+
+};
+
+
+
+.restaurant_menu {
+  display: "flex";
+  position: relative;
+  flex-direction: row;
+  flex-wrap: "wrap";
+  margin-top: "45px";
+  align-items: center;
+  justify-content:flex-end;
+  border: 1px solid red;
+
+}
+
+
+.others_restaurant.home_navbar {
+  width: 100%;
+  height: 650px;
+  display: flex;
+  background: url("/public/restaurant/others.png");
+  background-size: cover;
+
+
+ 
+
+  }
+
+  /* .shop_page {
+     width: 100%;
+    height: 650px;
+    display: flex;
+  
+    background-size: cover;
+    margin-top: 0px;
+    background-color: #222222;
+    border: 1px solid green; 
+
+  }  */
+
+  .shop_main_css {
+    margin-top: 100px;
+    margin-bottom: 0px;
+    width: 1720px;
+    height: 1430px;
+    background-color: #dee2e6;
+    display: flex;
+    margin-left: -200px;
+   
+
+    flex-wrap: wrap;
+    
+  }
+
+  .shop_left_side {
+    width: 300px;
+    height: 2200px;
+
+  }
+
+  .shop_right_side {
+    width: 1100px;;
+    height: 1300px;
+    display: flex;
+    flex-direction: row;
+
+    flex-wrap: wrap;
+    margin-top: 25px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    
+  }
+  .shop_right_side.shop_photo {
+    width: 330px;
+    height: 197px;
+
+  }    
+  .shop_pizza {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   /* font-size:large;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   font-weight: 200;
+   font-style: normal; */
+   margin-left: 100px;
+
+  }
+
+
+  .shop_left_side .left_title {
+   
+   width: 300px;
+   height: 245px;
+
+  }
+
+  .shop_left_side .part2 {
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   font-size: 20px;
+   color: #222222;
+    width: 240px;
+    height: 100px;
+    margin-left: 25px;
+    background-color: #fff;
+ 
+   }
+
+   .shop_left_side .part3 {
+    width: 240px;
+    height: 765px;
+    margin-top: 45px;
+    margin-left: 25px;
+
+     background-color: #fff;
+  
+    }
+
+    .shop_left_side .left_title .part1 {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+      font-size: 25px;
+     
+   
+     }
+
+     .shop_left_side .part4 {
+      display: flex;
+      flex-direction: column;
+      margin-top: 50px;
+      font-size: 25px;
+    
+    
+      }
+
+      .shop_left_side .category {
+       font-size: 20px;
+      
+        }
+        .shop_left_side .part5 {
+          margin-top: 80px;
+          margin-left: 20px;
+          font-size: 20px;
+         
+           }
+
+  .homepage .ad_frame {
+    width: 100%;
+    height: 693px;
+    display:flex;
+    overflow: hidden;
+    box-shadow: 0px -62px 60px 20px rgb(217 217 217 /40%);
+    margin-top:  186px;
+    background-color: #956dd3;
+  }
+
+  .homepage .ads_video {
+    width: 100%;
+    background:#0c0e12;
+    display:flex;
+    box-shadow: 0px -8px 90px rgb (215 215 255);
+    transform: scale(1.5);
+    overflow: hidden;
+  }
+  .homepage .ad_frame1 {
+    width: 1170px;
+    height: 430px;
+    display:flex;
+    overflow: hidden;
+    box-shadow: 0px -62px 60px 20px rgb(217 217 217 /40%);
+    margin-top: 58px;
+    margin-left: -180px;
+
+    background-color: #956dd3;
+  }
