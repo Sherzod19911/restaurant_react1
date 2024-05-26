@@ -90,7 +90,7 @@ const actionDispatch = (dispach: Dispatch) => ({
     const [targetProductSearchObj, setTargetProductSearchObj] =
       useState<ProductSearchObj>({
         page: 1,
-        limit: 12,
+        limit: 8,
         order: "createdAt",
         restaurant_mb_id: restaurant_id,
         product_collection: "dish",
@@ -100,7 +100,11 @@ const actionDispatch = (dispach: Dispatch) => ({
 
           const restaurantService = new RestaurantApiService();
           restaurantService
-            .getRestaurants({ page: 1, limit: 10, order: "random" })
+            .getRestaurants({
+                 page: 1,
+                  limit: 10,
+                   order: "random" 
+                })
             .then((data) => setRandomRestaurants(data))
             .catch((err) => console.log(err));
 
@@ -158,7 +162,7 @@ const actionDispatch = (dispach: Dispatch) => ({
                                 <input
                                     type={"search"}
                                     className={"Single_searchInput"}
-                                    name={"Single_resSearch"}
+                                    name={"Single_resSearch"}   
                                     placeholder={"Search"}
                                 />
                                 <Button
@@ -176,15 +180,15 @@ const actionDispatch = (dispach: Dispatch) => ({
                 <Stack
                     style={{ width: "100%", display: "flex" }}
                     flexDirection={"row"}
-                    sx={{ mt: "35px" }}
+                    sx={{ mt: "35px",cursor: "pointer"}}
                 >
                     <Box className={"prev_btn restaurant-prev"}>
                         <ArrowBackIosNewIcon
                             sx={{ fontSize: 40 }}
-                            style={{ color: "white" }} 
+                            style={{ color: "green" }} 
                         />
                     </Box>
-                    <Swiper
+                    < Swiper
                         className={"restaurant_avatars_wrapper"}
                         slidesPerView={7}
                         centeredSlides={false}
@@ -197,7 +201,7 @@ const actionDispatch = (dispach: Dispatch) => ({
                         {randomRestaurants.map((ele: Restaurant) => {
                             const image_path = `${serverApi}/${ele.mb_image}`;
                             return (
-                                <SwiperSlide
+                                <SwiperSlide onClick={() => chosenRestaurantHandler(ele._id)}
                                     style={{ cursor: "pointer" }}
                                     key={ele._id}
                                     className={"restaurant_avatars"}
@@ -328,7 +332,7 @@ const actionDispatch = (dispach: Dispatch) => ({
                                         className={"like_view_btn"}
                                         style={{ right: "36px" }}
                                     >
-                                        <Badge badgeContent={1000} color="primary" >
+                                       <Badge badgeContent={product.product_views} color="primary" >
                                             <Checkbox
                                                 icon={
                                                     <RemoveRedIEyeIcon style={{ color: "white" }} />
@@ -338,9 +342,9 @@ const actionDispatch = (dispach: Dispatch) => ({
                                     </Button>
                                 </Box>
                                 <Box className={"dish_desc"}>
-                                    <span className={"dish_title_text"}>very delicious</span>
+                                <span className={"dish_title_text"}>{product.product_name}</span>
                                     <div className={"dish_desc_text"} >
-                                        <MonetizationOnIcon />7
+                                    <MonetizationOnIcon />{product.product_price}
                                     </div>
                                 </Box>
                             </Box>
