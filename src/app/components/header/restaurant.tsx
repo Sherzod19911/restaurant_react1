@@ -71,7 +71,12 @@ import Basket from "./basket";
                             </NavLink>
                     </Box>
 
-                    <Basket cartItems={props.cartItems} onAdd={props.onAdd}/>    
+                    <Basket
+              cartItems={props.cartItems}
+              onAdd={props.onAdd}
+              onRemove={props.onRemove}
+              onDelete={props.onDelete}
+            />
                     {!props.verifiedMemberData ? (
                          <Box>
                          <Button 
@@ -125,7 +130,7 @@ import Basket from "./basket";
                       transformOrigin={{ horizontal: "right", vertical: "top" }}
                       anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
                     >
-                      <MenuItem onClick={props.handleLogOutRequest}>
+                     <MenuItem onClick={props.handleLogOutRequest}>
                         <ListItemIcon>
                           <Logout fontSize="small" style={{ color: "blue" }} />
                         </ListItemIcon>
