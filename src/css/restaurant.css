@@ -617,7 +617,7 @@
 .restaurant_page .single_restaurant .about_left .about_left_desc {
     padding: 20px;
     width: 100%;
-    height: 329px;
+    height: 429px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -640,6 +640,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+   
 }
 
 .restaurant_page .single_restaurant .about_left_desc p {
@@ -972,5 +973,5 @@
     color: #ffffff;
   }
   
-  /*End ChosenDish*/
+
   

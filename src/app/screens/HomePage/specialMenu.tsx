@@ -7,7 +7,8 @@ import CardOverflow from "@mui/joy/CardOverflow";
 import IconButton from "@mui/joy/IconButton";
 import { Favorite } from "@mui/icons-material";
 import VisibilityIcon from '@mui/icons-material/LocationOnRounded';
-import { Card } from "@mui/joy";
+import { Card } from "@mui/joy";import { useHistory } from "react-router-dom";
+
 
 
 import { Box, Container, Stack } from "@mui/material";
@@ -22,7 +23,7 @@ import { Product } from "../../../types/product";
 import { retrieveSpecialMenu } from "./selector";
 import { createSelector } from "reselect";
 import { serverApi } from "../../../lib/config";
-import { useHistory } from "react-router-dom";
+
 import { setSpecialMenu } from './slice';
 import ProductApiService from '../../apiservices/productApiServices';
 
@@ -54,6 +55,11 @@ export function SpecialMenu() {
       .then((data) => setSpecialMenu(data))
       .catch((err) => console.log(err));
   }, []);
+
+    /**HANDLERS */
+    const chosenDishHandler = (id: string) => {
+      history.push(`/restaurant/dish/${id}`);
+    };
 
   
     return (
@@ -121,7 +127,8 @@ marginRight: "25px", cursor: "pointer"
   }}
  />
  <CardContent sx={{ justifyContent: 'flex-end' }}>
- <img className="menu_photo" src={image_path}
+ <img  onClick={() => chosenDishHandler(product._id)}
+ className="menu_photo" src={image_path}
       loading="lazy"
       alt="rasim"
    />

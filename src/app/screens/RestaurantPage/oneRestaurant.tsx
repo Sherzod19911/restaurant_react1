@@ -13,6 +13,7 @@ import RemoveRedIEyeIcon from "@mui/icons-material/RemoveRedEye";
 import Badge from "@mui/material/Badge"
 import "../../../css/navbar.css";
 import "../../../css/restaurant.css";
+import { useHistory, useParams } from "react-router-dom";
 //REDUX
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -33,7 +34,7 @@ import {
   setTargetProducts,
 } from "../../screens/RestaurantPage/slice";
 import { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+
 import { Product } from "../../../types/product";
 import { ProductSearchObj } from '../../../types/others';
 
@@ -95,7 +96,7 @@ const actionDispatch = (dispach: Dispatch) => ({
         restaurant_mb_id: restaurant_id,
         product_collection: "dish",
       })  
-      const [productRebuild, setProductRebuild] = useState<Date>(new Date())
+      const [productRebuild, setProductRebuild] = useState<Date>(new Date());
       useEffect(() => {  
 
           const restaurantService = new RestaurantApiService();
@@ -107,6 +108,10 @@ const actionDispatch = (dispach: Dispatch) => ({
                 })
             .then((data) => setRandomRestaurants(data))
             .catch((err) => console.log(err));
+            restaurantService
+      .getChosenRestaurant(chosenRestaurantId)
+      .then((data) => setChosenRestaurant(data))
+      .catch((err) => console.log(err));
 
           const productService = new ProductApiService();
           productService
@@ -114,7 +119,7 @@ const actionDispatch = (dispach: Dispatch) => ({
             .then((data) => setTargetProducts(data))
             .catch((err) => console.log(err));
 
-        }, [targetProductSearchObj,productRebuild]);  
+        }, [targetProductSearchObj,productRebuild,chosenRestaurantId]);  
         /**Handlers */
         const chosenRestaurantHandler = (id: string) => {
           setChosenRestaurantId(id);
@@ -132,6 +137,9 @@ const actionDispatch = (dispach: Dispatch) => ({
           targetProductSearchObj.order = order;
           setTargetProductSearchObj({ ...targetProductSearchObj });
         }
+        const chosenDishHandler = (id: string) => {
+          history.push(`/restaurant/dish/${id}`)
+        }
 
         const targetLikeProduct = async (e: any) => {
           try {
@@ -145,7 +153,7 @@ const actionDispatch = (dispach: Dispatch) => ({
             assert.ok(like_result, Definer.general_err1);
 
             await sweetTopSmallSuccessAlert("success", 700, false);
-            setProductRebuild(new Date())
+            setProductRebuild(new Date());
           } catch (err: any) {
             console.log("targetLikeProduct, ERROR:", err);
             sweetErrorHandling(err).then();
@@ -156,7 +164,7 @@ const actionDispatch = (dispach: Dispatch) => ({
         <Stack flexDirection={"column"} alignItems={"center"}>
                 <Stack className={"avatar_big_box"}>
                     <Box className={"top_text"}>
-                        <p>Gold Samarkand</p>
+                    <p>{chosenRestaurant?.mb_nick} Restaurant</p>
                         <Box className={"Single_search_big_box"}>
                             <form className={"Single_search_form"} action={""} method={""}>
                                 <input
@@ -190,7 +198,7 @@ const actionDispatch = (dispach: Dispatch) => ({
                     </Box>
                     < Swiper
                         className={"restaurant_avatars_wrapper"}
-                        slidesPerView={7}
+                        slidesPerView={6}
                         centeredSlides={false}
                         spaceBetween={30}
                         navigation={{
@@ -201,7 +209,8 @@ const actionDispatch = (dispach: Dispatch) => ({
                         {randomRestaurants.map((ele: Restaurant) => {
                             const image_path = `${serverApi}/${ele.mb_image}`;
                             return (
-                                <SwiperSlide onClick={() => chosenRestaurantHandler(ele._id)}
+                                <SwiperSlide 
+                                onClick={() => chosenRestaurantHandler(ele._id)}
                                     style={{ cursor: "pointer" }}
                                     key={ele._id}
                                     className={"restaurant_avatars"}
@@ -307,7 +316,10 @@ const actionDispatch = (dispach: Dispatch) => ({
                                         className={"like_view_btn"}
                                         style={{ left: "36px" }}     
                                     >
-                                         <Badge badgeContent={product.product_likes} color="primary">
+                                         <Badge 
+                                         
+                                         badgeContent={product.product_likes} 
+                                         color="primary">
                                             <Checkbox
                                                 icon={<FavoriteBorder style={{ color: "white" }} />}
                                                 id={product._id}
@@ -342,7 +354,8 @@ const actionDispatch = (dispach: Dispatch) => ({
                                     </Button>
                                 </Box>
                                 <Box className={"dish_desc"}>
-                                <span className={"dish_title_text"}>{product.product_name}</span>
+                                <span className={"dish_title_text"}>{product.product_name}
+                                </span>
                                     <div className={"dish_desc_text"} >
                                     <MonetizationOnIcon />{product.product_price}
                                     </div>
@@ -354,6 +367,89 @@ const actionDispatch = (dispach: Dispatch) => ({
             </Stack>
 
         </Stack>
+        </Container>
+        <div className={"review_for_restaurant"}>
+            <Container
+                sx={{ mt: "100px" }}
+                style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                }}
+            >
+                <Box className={"category_title"}>Oshxona haqida fikrlar</Box>
+                <Stack
+                    flexDirection={"row"}
+                    display={"flex"}
+                    justifyContent={"space-between"}
+                    width={"100%"}
+                >
+                    {Array.from(Array(4).keys()).map((ele, index) => {
+                        return (
+                            <Box className={"review_box"} key={index} >
+                                <Box display={"flex"} justifyContent={"center"}>
+                                    <img
+                                        src={"/community/cute_girl.jpg"}
+                                        className={"review_img"}
+                                    />
+                                </Box>
+                                <span className={"review_name"}>Rayhona Asadova</span>
+                                <span className={"review_prof"}>Foydalanuvchi</span>
+                                <p className={"review_desc"}>
+                                    Menga bu oshxonaning taomlari juda yoqadi! Hammaga tavsiya qilaman!
+                                </p>
+                                <div className={"review_stars"}>
+                                    <StarIcon style={{color: "#F2BD57"}} />
+                                    <StarIcon style={{color: "#F2BD57"}} />
+                                    <StarIcon style={{color: "#F2BD57"}} />
+                                    <StarIcon style={{color: "#whitesmoke"}} />
+                                    <StarIcon style={{color: "#whitesmoke"}} />
+                                </div>
+                            </Box>
+                        )
+                    })}
+                </Stack>
+
+            </Container>
+        </div>
+       
+
+        <Container className={"member_reviews"}>
+            <Box className={"category_title"}>About Restaurants</Box>
+            <Stack
+                display={"flex"}
+                flexDirection={"row"}
+                width={"90%"}
+                sx={{mt: "70px"}}
+            >
+                <Box className={"about_left"}
+                          sx={{ backgroundImage: 
+                            `url(${serverApi}/${chosenRestaurant?.mb_image})` 
+                          }}
+            >
+                <div className={"about_left_desc"}>
+                <span>{chosenRestaurant?.mb_nick}</span>
+              <p>{chosenRestaurant?.mb_description}</p>
+                </div>
+                </Box>
+                <Box className={"about_right"}>
+                    {Array.from(Array(2).keys()).map((ele, index) => {
+                        return (
+                            <Box display={"flex"} flexDirection={"row"} key={index}>
+                                <div className={"about_right_img"}></div>
+                                <div className={"about_right_desc"}>
+                                <span>Bizning mohir oshpazlarimiz</span>
+                                <p>
+                                    bizning mohir oshpazlarimiz butun dunyo buylab tajriba almashgan va judayam mazzali ovqatlari yurakdan tayyorlaydi!
+                                </p>
+                                </div>
+                    </Box>
+                  );
+                })};
+            </Box>
+            </Stack>
+
+            
         </Container>
 
         <Stack className={"review_for_restaurant"}>
