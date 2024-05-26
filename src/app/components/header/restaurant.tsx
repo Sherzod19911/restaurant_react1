@@ -33,13 +33,15 @@ import { NavLink } from 'react-router-dom';
                             Restaurant
                             </NavLink>
                     </Box>
-
+                    {props.verifiedMemberData ? (
                     <Box className="hover-line"onClick={props.setPath}>
                         <NavLink to="/Order" 
                         activeClassName="underLine">
                             Order
                             </NavLink>
                     </Box>
+                    ) : null}
+
                     <Box className="hover-line" onClick={props.setPath}>
                         <NavLink to="/Community" 
                         activeClassName="underLine">
@@ -48,9 +50,9 @@ import { NavLink } from 'react-router-dom';
                     </Box>
                     {props.verifiedMemberData ? (
                      <Box className="hover-line" onClick={props.setPath}>
-                     <NavLink to="/member-page" 
+                     <NavLink to="/member" 
                      activeClassName="underLine">
-                         Sahifam
+                         My page
                          </NavLink>
                  </Box> ) : null }
 

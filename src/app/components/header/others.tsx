@@ -33,13 +33,14 @@ export function NavbarOthers(props: any)  {
                            Restaurant
                            </NavLink>
                    </Box>
-
+                   {props.verifiedMemberData ? (
                    <Box className="hover-line"onClick={props.setPath}>
                        <NavLink to="/Order" 
                        activeClassName="underLine">
                            Order
                            </NavLink>
                    </Box>
+                   ) : null}
                    <Box className="hover-line" onClick={props.setPath}>
                        <NavLink to="/Community" 
                        activeClassName="underLine">
@@ -48,9 +49,9 @@ export function NavbarOthers(props: any)  {
                    </Box>
                    {props.verifiedMemberData ? (
                      <Box className="hover-line" onClick={props.setPath}>
-                     <NavLink to="/member-page" 
+                     <NavLink to="/member" 
                      activeClassName="underLine">
-                         Sahifam
+                         My page
                          </NavLink>
                  </Box> ) : null }
 

@@ -36,13 +36,14 @@ import { Logout } from '@mui/icons-material';
                             Restaurant
                             </NavLink>
                     </Box>
-
+                    {props.verifiedMemberData ? (
                     <Box className="hover-line"onClick={props.setPath}>
                         <NavLink to="/Order" 
                         activeClassName="underLine">
                             Order
                             </NavLink>
                     </Box>
+                    ) : null}
                     <Box className="hover-line" onClick={props.setPath}>
                         <NavLink to="/Community" 
                         activeClassName="underLine">
@@ -53,9 +54,9 @@ import { Logout } from '@mui/icons-material';
 
                     ? (
                      <Box className="hover-line" onClick={props.setPath}>
-                     <NavLink to="/member-page" 
+                     <NavLink to="/member" 
                      activeClassName="underLine">
-                         Sahifam
+                         My page
                          </NavLink>
                  </Box> ) : null }
                     <Box className="hover-line" onClick={props.setPath}>
