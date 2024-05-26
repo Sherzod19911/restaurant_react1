@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Users from "./components/users";
 import Dishes from './components/dishes';
 import { RestaurantPage } from './screens/RestaurantPage';
-import { OrderPage } from './screens/OrderPage';
+import { OrderPage } from './components/orders';
 import { ShopPage } from './screens/ShopPage';
 import { CommunityPage } from './screens/CommunityPage';
 import { HelpPage } from './screens/HelpPage';

@@ -2,6 +2,22 @@ import TabPanel from "@mui/lab/TabPanel";
 import { Box, Stack } from "@mui/material";
 import React from "react";
 import Button from "@mui/material/Button";
+//REDUX
+import { useSelector } from "react-redux";
+
+import { createSelector } from "reselect";
+import { Restaurant } from "../../../types/user";
+import { Dispatch } from "@reduxjs/toolkit";
+import { useHistory, useParams } from "react-router-dom";
+import { retrievePausedOrders } from "./selector";
+
+// REDUX SELECTOR
+const pausedOrdersRetriever = createSelector(
+  retrievePausedOrders,
+  (pausedOrders) => ({
+    pausedOrders,
+  })
+);
 
 
 const pausedOrders = [
@@ -11,6 +27,8 @@ const pausedOrders = [
 ];
 
  export default function PausedOrders (props: any) {
+       /**INITIALIZATIONS */
+   //const { pausedOrders } = useSelector(pausedOrdersRetriever);
     return (
         <TabPanel value={"1"}>
           <Stack>

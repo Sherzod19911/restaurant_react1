@@ -5,9 +5,33 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import React, { useEffect, useState } from "react";
 import { Container, Stack, Box } from "@mui/material";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import PausedOrders from "./pausedOrders";
+import ProcessOrders from "./processOrders";
+import FinishedOrders from "./finishedOrders";
+import { Order } from "../../../types/orders";
+import { setFinishedOrders, setPausedOrders, setProcessOrders } from "./slice";
 
 
 import TabList from "@mui/lab/TabList";
+//REDUX
+import { useDispatch, useSelector } from "react-redux";
+
+import { createSelector } from "reselect";
+import { Restaurant } from "../../../types/user";
+
+import { Dispatch } from "@reduxjs/toolkit";
+
+
+import { useHistory, useParams } from "react-router-dom";
+
+
+// REDUX SLICE
+const actionDispatch = (dispach: Dispatch) => ({
+  setPausedOrders: (data: Order[]) => dispach(setPausedOrders(data)),
+  setProcessOrders: (data: Order[]) => dispach(setProcessOrders(data)),
+  setFinishedOrders: (data: Order[]) => dispach(setFinishedOrders(data)),
+});
 
 
 
@@ -15,14 +39,16 @@ import TabList from "@mui/lab/TabList";
 
 
 
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import PausedOrders from "../../components/orders/pausedOrders";
-import ProcessOrders from "../../components/orders/processOrders";
-import FinishedOrders from "../../components/orders/finishedOrders";
+
 
 export function OrderPage(props: any) {
     /** INITIALIZATIONS **/
     const [value, setValue] = useState("1");
+    const { setPausedOrders, setProcessOrders, setFinishedOrders } =
+    actionDispatch(useDispatch());
+
+  useEffect(()=> {}, [])  
+
 
 
   /** HANDLERS **/
@@ -134,10 +160,22 @@ return (
               className={"card_input"}
             />
             <div className={"cards_box"}>
-              <img src={"/icons/western_card.svg"} />
-              <img src={"/icons/master_card.svg"} />
-              <img src={"/icons/paypal_card.svg"} />
-              <img src={"/icons/visa_card.svg"} />
+            <img
+                  src="/icons/western_union.svg"
+                  style={{ width: "38px", height: "25px" }}
+                />
+                <img
+                  src="/icons/paypal.svg"
+                  style={{ width: "38px", height: "25px" }}
+                />
+                <img
+                  src="/icons/western_union.svg"
+                  style={{ width: "38px", height: "25px" }}
+                />
+                <img
+                  src="/icons/paypal.svg"
+                  style={{ width: "38px", height: "25px" }}
+                />
             </div>
           </Box>
         </Stack>

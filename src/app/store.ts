@@ -28,16 +28,18 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';
 import HomePageReducer from "./screens/HomePage/slice";
 import RestaurantPageReducer from './screens/RestaurantPage/slice';
+import OrdersPageReducer from './components/orders/slice';
 
 // Import any other necessary middleware or types
 
 export const store = configureStore({
- // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(reduxLogger),
+ 
   reducer: {
-    counter: counterReducer, // Add counterReducer to the reducers object
-    homePage: HomePageReducer, // Add HomePageReducer to the reducers object
-    restaurantPage: RestaurantPageReducer
-    // Add other reducers if you have them
+    counter: counterReducer, 
+    homePage: HomePageReducer, 
+    restaurantPage: RestaurantPageReducer,
+
+    ordersPage: OrdersPageReducer
   },
 });
 
