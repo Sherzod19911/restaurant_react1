@@ -24,13 +24,16 @@ import { MemberPage } from './screens/MemberPage';
 import AuthenticationModal from './components/auth';
 
 import { Member } from '../types/user';
-import { serverApi } from '../lib/config';
+
 import { sweetFailureProvider, sweetTopSmallSuccessAlert } from '../lib/sweetAlert';
 import { Definer } from '../lib/Definer';
 import assert from 'assert';
 import MemberApiService from './apiservices/memberApiServices';
 
-//import "../app/apiServices/verify";
+// import "../app/apiServices/verify";
+import { CartItem } from "../types/others";
+import { Product } from "../types/product";
+import { serverApi } from '../lib/config';
 
 
 
@@ -46,6 +49,11 @@ function App() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
+  const cartJson: any = localStorage.getItem("cart_data");
+  const current_cart: CartItem[] = JSON.parse(cartJson) ?? [];
+  const [cartItems, setCartItems] = useState<CartItem[]>(current_cart);
+
+
 
   useEffect (() => {
     console.log("=== useEffect: App ===");
@@ -57,7 +65,7 @@ function App() {
       member_data.mb_image = member_data.mb_image 
       ? `${serverApi}/${member_data.mb_image}` 
       : "/auth.jpg";
-      setVerifiedMemberData(member_data)
+      setVerifiedMemberData(member_data);
     }
 
   }, [signUpOpen, loginOpen]);
@@ -77,15 +85,44 @@ const handleCloseLogOut= (event: React.MouseEvent<HTMLElement>) => {
 const handleLogOutRequest = async () => {
   try{
     const memberApiService = new MemberApiService();
-    await memberApiService.logOutRequest();
-    await sweetTopSmallSuccessAlert("success", 700, true);
+      await memberApiService.logOutRequest();
+      await sweetTopSmallSuccessAlert("success", 700, true);
     //assert.ok(false, "test")
 
   }catch(err: any) {
     console.log(err);
     sweetFailureProvider(Definer.general_err1);
   }
-}
+};
+
+const onAdd = (product: Product) => {
+  const exist: any = cartItems?.find(
+    (item: CartItem) => item._id === product._id
+  );
+  if (exist) {
+    const cart_updated = cartItems?.map((item: CartItem) =>
+      item._id === product._id
+        ? { ...exist, quantity: exist.quantity + 1 }
+        : item
+    );
+    setCartItems(cart_updated)
+    localStorage.setItem("cart_data", JSON.stringify(cart_updated));
+  } else {
+    const new_item: CartItem = {
+      _id: product._id,
+      quantity: 1,
+      name: product.product_name,
+      price: product.product_price,
+      image: product.product_images[0],
+    };
+    const cart_updated = [...cartItems, { ...new_item }];
+    setCartItems(cart_updated);
+    localStorage.setItem("cart_data", JSON.stringify(cart_updated));
+  }
+};
+const onRemove = () => {};
+const onDelete = () => {};
+const onDeleteAll = () => {};
 
 
  return (
@@ -122,6 +159,8 @@ const handleLogOutRequest = async () => {
         handleCloseLogOut ={handleCloseLogOut}
 
         verifiedMemberData={verifiedMemberData}
+        cartItems={cartItems}
+        onAdd={onAdd}
         /> 
 ) : (
   <NavbarOthers setPath={setPath}
@@ -139,7 +178,7 @@ const handleLogOutRequest = async () => {
 
 <Switch>
       <Route path="/Restaurant">
-          <RestaurantPage />
+      <RestaurantPage onAdd={onAdd} />
         </Route>
        
         <Route path="/shops">
