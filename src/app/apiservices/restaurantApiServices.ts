@@ -17,12 +17,9 @@ class RestaurantApiService {
        try {
             const url = "/restaurants?order=top&page=1&limit=3",
             result = await axios.get(this.path + url, { withCredentials: true });
-        console.log("1");
-         console.log("url::", url);
-         console.log("result::", result);
-         assert.ok(result, Definer.general_err1);     
-
-            console.log("state:",  result.data.state);
+            assert.ok(result?.data, Definer.general_err1);
+            assert.ok(result?.data?.state != "fail", result?.data?.message);
+            console.log("state", result.data.state)
             const today_menus: Restaurant [] = result.data.data;
             return today_menus;
             console.log("result::", result);
@@ -37,12 +34,9 @@ class RestaurantApiService {
         try {
              const url = `/restaurants?order=${data.order}&page=${data.page}&limit=${data.limit}`,
              result = await axios.get(this.path + url, { withCredentials: true });
-         console.log("1");
-          console.log("url::", url);
-          console.log("result::", result);
-          assert.ok(result, Definer.general_err1);     
-
-            console.log("state:",  result.data.state);
+             assert.ok(result?.data, Definer.general_err1);
+             assert.ok(result?.data?.state != "fail", result?.data?.message);
+             console.log("state", result.data.state);
              const restaurants: Restaurant [] = result.data.data;
              return restaurants;
              console.log("result::", result);
@@ -57,9 +51,9 @@ class RestaurantApiService {
         try {
           const url = `/restaurants/${id}`,
             result = await axios.get(this.path + url, { withCredentials: true });
-          assert.ok(result, Definer.general_err1);
-    
-          console.log("state:", result.data.data);
+            assert.ok(result?.data, Definer.general_err1);
+            assert.ok(result?.data?.state != "fail", result?.data?.message);
+            console.log("state", result.data.state);
           const restaurant: Restaurant = result.data.data;
           return restaurant;
         } catch (err: any) {
