@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Users from "./components/users";
 import Dishes from './components/dishes';
 import { RestaurantPage } from './screens/RestaurantPage';
-import { OrderPage } from './components/orders';
+
 import { ShopPage } from './screens/ShopPage';
 import { CommunityPage } from './screens/CommunityPage';
 import { HelpPage } from './screens/HelpPage';
@@ -34,6 +34,7 @@ import MemberApiService from './apiservices/memberApiServices';
 import { CartItem } from "../types/others";
 import { Product } from "../types/product";
 import { serverApi } from '../lib/config';
+import { OrdersPage } from './components/orders';
 
 
 
@@ -45,6 +46,8 @@ function App() {
   const main_path = window.location.pathname;
   const [signUpOpen, setSignUpOpen] = useState(false); // ekranda paydo bulmaydi avtomatik
   const[ loginOpen, setLoginOpen] = useState(false); // ekranda paydo bulmaydi avtomatik
+  const [orderRebuild, setOrderRebuild] = useState<Date>(new Date());
+
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -147,7 +150,10 @@ const onDelete = (item: CartItem) => {
   setCartItems(cart_updated);
   localStorage.setItem("cart_data", JSON.stringify(cart_updated));
 };
-const onDeleteAll = () => {};
+const onDeleteAll = () => {
+  setCartItems([]);
+    localStorage.removeItem("cart_data");
+};
 
 
  return (
@@ -174,7 +180,9 @@ const onDeleteAll = () => {};
         cartItems={cartItems}
         onAdd={onAdd}
         onRemove={onRemove}
-        onDelete = {onDelete}
+        onDelete={onDelete}
+        onDeleteAll={onDeleteAll}
+        setOrderRebuild={setOrderRebuild}
   />
 ) : main_path.includes("/restaurant") ? (
   <NavbarRestaurant
@@ -190,7 +198,11 @@ const onDeleteAll = () => {};
         cartItems={cartItems}
         onAdd={onAdd}
         onRemove={onRemove}
-        onDelete = {onDelete}
+        onDelete={onDelete}
+        onDeleteAll={onDeleteAll}
+        setOrderRebuild={setOrderRebuild}
+
+
         /> 
 ) : (
   <NavbarOthers setPath={setPath}
@@ -205,8 +217,11 @@ const onDeleteAll = () => {};
         cartItems={cartItems}
           onAdd={onAdd}
           onRemove={onRemove}
-          onDelete = {onDelete}
-  />
+          onDelete={onDelete}
+          onDeleteAll={onDeleteAll}
+          setOrderRebuild={setOrderRebuild}
+
+          />
 )}
 
 <Switch>
@@ -218,7 +233,10 @@ const onDeleteAll = () => {};
           <ShopPage />
         </Route>
         <Route path="/Order">
-          <OrderPage />
+        <OrdersPage
+            orderRebuild={orderRebuild}
+            setOrderRebuild={setOrderRebuild}
+          />
         </Route>
        
         <Route path="/help">
