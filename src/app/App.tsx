@@ -170,8 +170,11 @@ const onDeleteAll = () => {};
         handleLogOutClick ={handleLogOutClick}
         handleLogOutRequest ={handleLogOutRequest}      
         handleCloseLogOut ={handleCloseLogOut}
-
         verifiedMemberData={verifiedMemberData}
+        cartItems={cartItems}
+        onAdd={onAdd}
+        onRemove={onRemove}
+        onDelete = {onDelete}
   />
 ) : main_path.includes("/restaurant") ? (
   <NavbarRestaurant
@@ -198,8 +201,11 @@ const onDeleteAll = () => {};
         handleLogOutClick ={handleLogOutClick}
         handleLogOutRequest ={handleLogOutRequest}      
         handleCloseLogOut ={handleCloseLogOut}
-
         verifiedMemberData={verifiedMemberData}
+        cartItems={cartItems}
+          onAdd={onAdd}
+          onRemove={onRemove}
+          onDelete = {onDelete}
   />
 )}
 
